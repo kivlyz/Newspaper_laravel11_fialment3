@@ -10,10 +10,12 @@ use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
+use Illuminate\Container\Attributes\Auth;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Support\Str;
 use function Pest\Livewire\livewire;
+
 
 class ArticleResource extends Resource
 {
@@ -38,8 +40,10 @@ class ArticleResource extends Resource
                 Forms\Components\RichEditor::make('content')
                     ->required()
                     ->columnSpanFull(),
-                Forms\Components\Select::make('excerpt')
-                    ->multiple()
+                Forms\Components\RichEditor::make('excerpt')
+                    ->required()
+                    ->columnSpanFull(),
+                Forms\Components\Select::make('tag_id')
 
                     ->relationship(name: 'tag', titleAttribute: 'name')
                     ->createOptionForm([
@@ -52,17 +56,25 @@ class ArticleResource extends Resource
                             ->required(),
                     ]),
 
-                Forms\Components\TextInput::make('author_id')
-                    ->required()
-                    ->numeric(),
-                Forms\Components\Select::make('category_id')
-
+                Forms\Components\TextInput::make('user_id')
+                    // ->default(function () {
+                    //     return 'user';
+                    // })
+                    ->default(Auth()->user()->id)
+                    ->required(),
+                Forms\Components\Select::make('categorie_id')
                     ->relationship(name: 'categorie', titleAttribute: 'name')
                     ->required(),
                 Forms\Components\FileUpload::make('image')
                     ->image(),
-                Forms\Components\TextInput::make('status')
-                    ->required(),
+                Forms\Components\Select::make('status')
+                    ->required()
+                    ->options([
+                        'draft' => 'Draft',
+                        'published' => 'Published',
+                        'archived' => 'Archived',
+
+                    ]),
                 Forms\Components\DateTimePicker::make('published_at'),
                 Forms\Components\TextInput::make('meta_title')
                     ->maxLength(255),
@@ -81,12 +93,12 @@ class ArticleResource extends Resource
                     ->searchable(),
                 Tables\Columns\TextColumn::make('slug')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('excerpt')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('author_id')
+
+                Tables\Columns\TextColumn::make('user.name')
+                    ->label('Penulis')
                     ->numeric()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('category_id')
+                Tables\Columns\TextColumn::make('categorie.name')
                     ->numeric()
                     ->sortable(),
                 Tables\Columns\ImageColumn::make('image'),
@@ -94,8 +106,7 @@ class ArticleResource extends Resource
                 Tables\Columns\TextColumn::make('published_at')
                     ->dateTime()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('meta_title')
-                    ->searchable(),
+
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()

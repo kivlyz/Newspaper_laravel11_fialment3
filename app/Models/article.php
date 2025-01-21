@@ -13,6 +13,12 @@ class article extends Model
     {
         return $this->belongsTo(categorie::class);
     }
+
+    public function user()
+    {
+        return $this->belongsTo(user::class);
+    }
+
     public function tag()
     {
         return $this->hasMany(tag::class);

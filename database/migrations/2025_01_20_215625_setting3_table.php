@@ -11,9 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('articles', function (Blueprint $table) {
+        Schema::table('users', function (Blueprint $table) {
             // tambah kolom 
-            $table->integer('categorie_id');
+            $table->integer('role_id');
+            // $table->dropColumn('user_id');
         });
     }
 
