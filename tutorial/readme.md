@@ -28,3 +28,5 @@ _Setting (Pengaturan)_ 7. _Menu Manager_
 _Statis Konten (Halaman Statis)_ 9. _Komentar_ 10. _Media (Gambar/Video)_ 11. _Notifikasi_ 12. _Moderasi Konten_ 13. _Permission & Role Management_ 17. _Backup & Restore_ 18. _Log Aktivitas_
 
 berita
+ in berubah lohhhhh 
+ 
