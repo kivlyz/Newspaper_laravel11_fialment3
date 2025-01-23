@@ -58,7 +58,7 @@ class ArticleResource extends Resource
                             ->required(),
                     ]),
 
-                Forms\Components\TextInput::make('user_id')
+                Forms\Components\Hidden::make('user_id')
                     // ->default(function () {
                     //     return 'user';
                     // })
