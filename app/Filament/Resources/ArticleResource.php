@@ -15,6 +15,8 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Support\Str;
 use function Pest\Livewire\livewire;
+use Filament\Tables\Filters\SelectFilter;
+
 
 
 class ArticleResource extends Resource
@@ -123,7 +125,10 @@ class ArticleResource extends Resource
                     ->boolean(),
             ])
             ->filters([
-                //
+                // Filter articles by user
+                SelectFilter::make('user_id')
+                    ->relationship('user', 'name') // Relates to the 'user' model and displays the 'name' column
+                    ->label('Filter by User'),
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
@@ -149,5 +154,24 @@ class ArticleResource extends Resource
             'create' => Pages\CreateArticle::route('/create'),
             'edit' => Pages\EditArticle::route('/{record}/edit'),
         ];
+    }
+
+    public static function getEloquentQuery(): Builder
+    {
+        $user = auth()->user();
+
+        // Check roles dynamically
+        if ($user->hasRole('super_admin')) {
+            // Admins can see all articles
+            return parent::getEloquentQuery();
+        }
+
+        if ($user->hasRole('Penulis')) {
+            // Authors can see only their articles
+            return parent::getEloquentQuery()->where('user_id', $user->id);
+        }
+
+        // Default behavior: return no data for other roles
+        return parent::getEloquentQuery()->whereRaw('1 = 0');
     }
 }
