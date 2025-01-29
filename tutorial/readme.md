@@ -28,5 +28,23 @@ _Setting (Pengaturan)_ 7. _Menu Manager_
 _Statis Konten (Halaman Statis)_ 9. _Komentar_ 10. _Media (Gambar/Video)_ 11. _Notifikasi_ 12. _Moderasi Konten_ 13. _Permission & Role Management_ 17. _Backup & Restore_ 18. _Log Aktivitas_
 
 berita
- in berubah lohhhhh 
- 
+in berubah lohhhhh
+
+# Project Name
+
+A brief description of your project goes here.
+
+---
+
+## Installation
+
+Follow these steps to set up the project on your local machine:
+
+### 1. Clone the Repository
+
+Clone this repository to your local machine:
+
+```bash
+git clone https://github.com/your-username/your-repository.git
+cd your-repository
+```
