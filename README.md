@@ -15,3 +15,27 @@ git clone https://github.com/kivlyz/Newspaper_laravel11_fialment3.git
 ```bash
 composer install
 ```
+
+#### 3. Generating Application Key
+
+```bash
+php artisan key:generate
+```
+
+#### 3. Generating User
+
+```bash
+php artisan key:generate
+```
+
+#### 3. Run the migration
+
+```bash
+php artisan migrate
+```
+
+#### 3. Run the migration
+
+```bash
+php artisan make:filament-user
+```
