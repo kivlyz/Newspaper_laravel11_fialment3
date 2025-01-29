@@ -6,6 +6,27 @@ Aplikasi ini adalah sistem manajemen berita berbasis web yang dikembangkan mengg
 
 ---
 
+## 🔧 Fitur Utama
+
+-   Manajemen berita (tambah, edit, hapus, publish)
+-   Kategori berita
+-   Pengelolaan pengguna dan peran dengan Filament Shield
+-   Upload dan pengelolaan gambar berita
+-   Panel admin berbasis Filament 3
+-   Sistem autentikasi dan otorisasi
+
+---
+
+## 🛠 Teknologi yang Digunakan
+
+-   **Laravel 11** - Framework utama
+-   **Filament 3** - Admin panel
+-   **MySQL** - Database
+-   **Composer** - Dependency manager
+-   **PHP 8.2+** - Bahasa pemrograman utama
+
+---
+
 ## 📥 Instalasi
 
 Ikuti langkah-langkah berikut untuk menginstal dan menjalankan proyek ini di lokal Anda.
@@ -125,29 +146,6 @@ Untuk masuk ke panel admin Filament:
 http://127.0.0.1:8000/admin
 ```
 
----
-
-## 🔧 Fitur Utama
-
--   Manajemen berita (tambah, edit, hapus, publish)
--   Kategori berita
--   Pengelolaan pengguna dan peran dengan Filament Shield
--   Upload dan pengelolaan gambar berita
--   Panel admin berbasis Filament 3
--   Sistem autentikasi dan otorisasi
-
----
-
-## 🛠 Teknologi yang Digunakan
-
--   **Laravel 11** - Framework utama
--   **Filament 3** - Admin panel
--   **MySQL** - Database
--   **Composer** - Dependency manager
--   **PHP 8.2+** - Bahasa pemrograman utama
-
----
-
 ## 🚀 Deployment
 
 Untuk melakukan deployment ke hosting atau VPS, pastikan Anda:
@@ -178,7 +176,7 @@ Proyek ini menggunakan lisensi **MIT**. Anda bebas untuk menggunakannya dan meng
 
 Jika ada pertanyaan atau butuh bantuan, hubungi:
 
--   **Email**: arielthekillers@gmail.com
+-   **Email**: arielthekillers@gmail.com | kivlyz@gmail.com
 -   **Website**: [algoritmakaltim.com](https://algoritmakaltim.com)
 
 Happy coding! 🚀
