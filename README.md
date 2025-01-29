@@ -4,8 +4,6 @@
 
 Aplikasi ini adalah sistem manajemen berita berbasis web yang dikembangkan menggunakan **Laravel 11** dan **Filament 3**. Dengan aplikasi ini, Anda dapat mengelola berita, kategori, pengguna, dan peran dengan mudah menggunakan Filament Admin Panel.
 
----
-
 ## 🔧 Fitur Utama
 
 -   Manajemen berita (tambah, edit, hapus, publish)
@@ -15,8 +13,6 @@ Aplikasi ini adalah sistem manajemen berita berbasis web yang dikembangkan mengg
 -   Panel admin berbasis Filament 3
 -   Sistem autentikasi dan otorisasi
 
----
-
 ## 🛠 Teknologi yang Digunakan
 
 -   **Laravel 11** - Framework utama
@@ -24,8 +20,6 @@ Aplikasi ini adalah sistem manajemen berita berbasis web yang dikembangkan mengg
 -   **MySQL** - Database
 -   **Composer** - Dependency manager
 -   **PHP 8.2+** - Bahasa pemrograman utama
-
----
 
 ## 📥 Instalasi
 
@@ -164,13 +158,9 @@ php artisan db:seed --force
 php artisan storage:link
 ```
 
----
-
 ## 📄 Lisensi
 
 Proyek ini menggunakan lisensi **MIT**. Anda bebas untuk menggunakannya dan mengembangkannya sesuai kebutuhan.
-
----
 
 ## 📞 Kontak
 
