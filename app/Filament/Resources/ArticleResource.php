@@ -10,12 +10,12 @@ use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Illuminate\Container\Attributes\Auth;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Support\Str;
 use function Pest\Livewire\livewire;
 use Filament\Tables\Filters\SelectFilter;
+use Illuminate\Support\Facades\Auth;
 
 
 
@@ -24,7 +24,7 @@ class ArticleResource extends Resource
     protected static ?string $model = Article::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
-    protected static ?string $navigationGroup = 'Baru';
+    protected static ?string $navigationGroup = 'Content Management';
 
     public static function form(Form $form): Form
     {
@@ -57,15 +57,11 @@ class ArticleResource extends Resource
                         Forms\Components\TextInput::make('slug')
                             ->required(),
                     ]),
-
                 Forms\Components\Hidden::make('user_id')
-                    // ->default(function () {
-                    //     return 'user';
-                    // })
-                    ->default(Auth()->user()->id)
+                    ->default(Auth::id()) // This is safe and clean
                     ->required(),
                 Forms\Components\Select::make('categorie_id')
-                    ->relationship(name: 'categorie', titleAttribute: 'name')
+                    ->relationship(name: 'category', titleAttribute: 'name')
                     ->required(),
                 Forms\Components\FileUpload::make('image')
                     ->image(),
@@ -158,20 +154,20 @@ class ArticleResource extends Resource
 
     public static function getEloquentQuery(): Builder
     {
-        $user = auth()->user();
+        $user = Auth::user(); // Get the authenticated user
 
-        // Check roles dynamically
+        if (!$user) {
+            return parent::getEloquentQuery()->whereRaw('1 = 0'); // Unauthorized access
+        }
+
         if ($user->hasRole('super_admin')) {
-            // Admins can see all articles
-            return parent::getEloquentQuery();
+            return parent::getEloquentQuery(); // Admin sees all articles
         }
 
         if ($user->hasRole('Penulis')) {
-            // Authors can see only their articles
-            return parent::getEloquentQuery()->where('user_id', $user->id);
+            return parent::getEloquentQuery()->where('user_id', $user->id); // Authors see only their articles
         }
 
-        // Default behavior: return no data for other roles
-        return parent::getEloquentQuery()->whereRaw('1 = 0');
+        return parent::getEloquentQuery()->whereRaw('1 = 0'); // Default for other roles
     }
 }

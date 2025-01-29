@@ -18,7 +18,7 @@ return new class extends Migration
             $table->text('content'); // Main content of the article
             $table->string('excerpt')->nullable(); // Short preview or summary of the article
             $table->unsignedBigInteger('user_id'); // Foreign key for the article's author (users table)
-            $table->unsignedBigInteger('categorie_id')->nullable(); // Foreign key for the category (optional)
+            $table->unsignedBigInteger('category_id')->nullable(); // Foreign key for the category (optional)
             $table->string('image')->nullable(); // Image URL or path (optional)
             $table->enum('status', ['draft', 'published', 'archived'])->default('draft'); // Article status
             $table->timestamp('published_at')->nullable(); // Timestamp for when the article was published

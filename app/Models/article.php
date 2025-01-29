@@ -9,9 +9,9 @@ class article extends Model
 {
     protected $guarded = [];
 
-    public function categorie()
+    public function category()
     {
-        return $this->belongsTo(categorie::class);
+        return $this->belongsTo(category::class);
     }
 
     public function user()
